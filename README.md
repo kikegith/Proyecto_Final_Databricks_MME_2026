@@ -15,5 +15,5 @@ El procesamiento se realiza utilizando Azure Databricks, aplicando la arquitectu
 ## 🏗 Arquitectura del Proyecto
 
 <p align="center">
-<img src="images/Arquitectura_ProyectoETL_Databricks" width="900">
+<img src="images/Arquitectura_ProyectoETL_Databricks.png" width="900">
 </p>
