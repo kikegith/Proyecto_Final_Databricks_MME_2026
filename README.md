@@ -103,3 +103,58 @@ El proyecto implementa la arquitectura **Medallion**, organizando el procesamien
 - Generación de indicadores (KPIs).
 - Resúmenes por ciudad, cliente, estado y tipo de transacción.
 - Preparación de la información para consumo en Power BI.
+---
+
+# 🥇 Modelo Analítico - Capa Gold
+
+La capa **Gold** contiene las tablas analíticas listas para el consumo de herramientas de Business Intelligence. Estas tablas fueron utilizadas como fuente de datos para el Dashboard Ejecutivo desarrollado en Power BI.
+
+| Tabla | Descripción |
+|--------|-------------|
+| **detalle_transacciones** | Contiene el detalle de todas las transacciones procesadas. |
+| **kpi_ejecutivo** | Tabla con los principales indicadores ejecutivos del proyecto. |
+| **ranking_clientes** | Ranking de clientes según el número de transacciones y monto total. |
+| **resumen_cliente** | Información consolidada por cliente. |
+| **resumen_ciudad** | Resumen de transacciones agrupadas por ciudad. |
+| **resumen_estado** | Resumen de clientes activos e inactivos. |
+| **resumen_tipo_transaccion** | Resumen por tipo de transacción. |
+
+---
+
+# 📊 Dashboard Ejecutivo (Power BI)
+
+El Dashboard fue desarrollado utilizando **Power BI Desktop**, conectado directamente a las tablas de la capa **Gold** almacenadas en Azure Databricks mediante un **SQL Warehouse**.
+
+### Principales indicadores
+
+- 👥 Clientes Activos
+- 💰 Monto Total Transaccionado
+- 🔄 Total de Transacciones
+
+### Visualizaciones
+
+- 📈 Cantidad de Transacciones por Tipo
+- 🌎 Monto Total por Ciudad
+- 🟢 Estado de Clientes (Activo / Inactivo)
+- 🏆 Ranking de Clientes
+
+<p align="center">
+    <img src="dashboard/Dashboard.png" width="900">
+</p>
+
+---
+
+# 🔄 Workflow CI (GitHub Actions)
+
+Como parte del proyecto se implementó un flujo de **Integración Continua (CI)** utilizando **GitHub Actions**, permitiendo validar automáticamente la estructura del repositorio y los notebooks cada vez que se realiza un cambio.
+
+### Validaciones implementadas
+
+- ✅ Validación de notebooks Jupyter (.ipynb).
+- ✅ Verificación de la estructura del proyecto.
+- ✅ Validación del archivo README.
+- ✅ Detección de posibles credenciales expuestas.
+
+<p align="center">
+    <img src="evidencias/workflow.png" width="900">
+</p>
