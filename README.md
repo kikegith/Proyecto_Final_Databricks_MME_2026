@@ -146,7 +146,7 @@ El Dashboard fue desarrollado utilizando **Power BI Desktop**, conectado directa
 
 # 🔄 Workflow CI (GitHub Actions)
 
-Como parte del proyecto se implementó un flujo de **Integración Continua (CI)** utilizando **GitHub Actions**, permitiendo validar automáticamente la estructura del repositorio y los notebooks cada vez que se realiza un cambio.
+El proceso ETL se encuentra orquestado mediante un Lakeflow Job de Azure Databricks. El workflow ejecuta secuencialmente las capas Bronze, Silver y Gold, controlando las dependencias entre los diferentes notebooks.
 
 <p align="center">
     <img src="evidencias/workflow_databricks.png" width="900">
