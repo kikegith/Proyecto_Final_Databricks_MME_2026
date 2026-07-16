@@ -148,15 +148,8 @@ El Dashboard fue desarrollado utilizando **Power BI Desktop**, conectado directa
 
 Como parte del proyecto se implementó un flujo de **Integración Continua (CI)** utilizando **GitHub Actions**, permitiendo validar automáticamente la estructura del repositorio y los notebooks cada vez que se realiza un cambio.
 
-### Validaciones implementadas
-
-- ✅ Validación de notebooks Jupyter (.ipynb).
-- ✅ Verificación de la estructura del proyecto.
-- ✅ Validación del archivo README.
-- ✅ Detección de posibles credenciales expuestas.
-
 <p align="center">
-    <img src="evidencias/workflow.png" width="900">
+    <img src="evidencias/workflow_databricks.png" width="900">
 </p>
 ---
 
