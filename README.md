@@ -46,34 +46,36 @@ Proyecto_Final_Databricks_MME_2026/
 │       └── ci_databricks.yml
 │
 ├── preamb/
-│   ├── 00_Catalog.ipynb
-│   ├── 01_UnityCatalog.ipynb
-│   ├── 02_ExternalLocation.ipynb
-│   └── 03_Schemas.ipynb
+│   ├── 00_Preparacion_Ambiente.py
+│   ├── 01_Creacion_Tablas.py
+│   
 │
 ├── proceso/
-│   ├── 01_Bronze.ipynb
-│   ├── 02_Silver.ipynb
-│   └── 03_Gold.ipynb
+│   ├── 01_Ingesta_Bronze.py
+│   ├── 02_Limpieza_Silver.py
+│   └── 03_Modelado_Gold.py
 │
 ├── seguridad/
-│   └── grant.ipynb
+│   └── Grants.py
 │
 ├── reversion/
-│   └── drop_tablas.ipynb
+│   └── Drop_Objetos.py
 │
 ├── dashboard/
-│   ├── Proyecto_ETL_Dashboard.pbix
-│   └── dashboard.png
+│   ├── Proyecto_ETL_Databricks_Dashboard.pbix
+│   └── Dashboard.png
 │
 ├── datasets/
 │   ├── clientes.csv
 │   └── transacciones.csv
 │
 ├── evidencias/
-│   ├── arquitectura.png
-│   ├── workflow.png
-│   └── capturas/
+│   ├── resource_group.png
+│   ├── Datalake_Containers.png
+│   ├── GitHub_Actions.png
+|   ├── GitHub_Merge_Pull.png
+|   ├── Datalake_Containers.png
+|   └── workflow_databricks.png
 │
 └── README.md
 ```
