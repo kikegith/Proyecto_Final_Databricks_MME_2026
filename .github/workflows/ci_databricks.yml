@@ -1,0 +1,98 @@
+name: CI Proyecto ETL Databricks
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "**/*.ipynb"
+      - "**/*.py"
+      - "**/*.sql"
+      - ".github/workflows/**"
+
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  validar-proyecto:
+    name: Validar notebooks y estructura
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependencias de validación
+        run: |
+          python -m pip install --upgrade pip
+          pip install nbformat
+
+      - name: Validar notebooks Jupyter
+        run: |
+          python <<'PY'
+          import glob
+          import sys
+          import nbformat
+
+          notebooks = glob.glob("**/*.ipynb", recursive=True)
+
+          if not notebooks:
+              print("ADVERTENCIA: No se encontraron notebooks .ipynb.")
+              sys.exit(0)
+
+          errores = []
+
+          for archivo in notebooks:
+              try:
+                  with open(archivo, "r", encoding="utf-8") as notebook:
+                      nbformat.read(notebook, as_version=4)
+
+                  print(f"OK: {archivo}")
+
+              except Exception as error:
+                  errores.append((archivo, str(error)))
+                  print(f"ERROR: {archivo}: {error}")
+
+          if errores:
+              print("\nSe encontraron notebooks inválidos:")
+              for archivo, error in errores:
+                  print(f"- {archivo}: {error}")
+              sys.exit(1)
+
+          print(f"\nValidación completada: {len(notebooks)} notebooks válidos.")
+          PY
+
+      - name: Validar archivos principales
+        run: |
+          if [ ! -f "README.md" ]; then
+            echo "ERROR: No existe README.md"
+            exit 1
+          fi
+
+          echo "README.md encontrado."
+
+      - name: Buscar posibles credenciales expuestas
+        run: |
+          if grep -RniE \
+            --exclude-dir=.git \
+            --exclude="*.pbix" \
+            --exclude="ci_databricks.yml" \
+            "(dapi[a-zA-Z0-9]+|client_secret[[:space:]]*=|password[[:space:]]*=|access_token[[:space:]]*=)" .;
+          then
+            echo "ERROR: Se encontraron posibles credenciales o tokens."
+            exit 1
+          else
+            echo "No se encontraron credenciales expuestas."
+          fi
+
+      - name: Resultado de la validación
+        run: |
+          echo "Proyecto ETL Databricks validado correctamente."
