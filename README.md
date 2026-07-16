@@ -158,3 +158,44 @@ Como parte del proyecto se implementó un flujo de **Integración Continua (CI)*
 <p align="center">
     <img src="evidencias/workflow.png" width="900">
 </p>
+---
+
+# ▶️ Cómo ejecutar el proyecto
+
+Para ejecutar correctamente este proyecto, seguir el siguiente orden:
+
+1. Configurar Azure Data Lake Storage Gen2.
+2. Crear Unity Catalog.
+3. Configurar Storage Credential.
+4. Crear External Location.
+5. Crear los Schemas (Bronze, Silver y Gold).
+6. Ejecutar el notebook de preparación del ambiente.
+7. Ejecutar el notebook de procesamiento Bronze.
+8. Ejecutar el notebook de procesamiento Silver.
+9. Ejecutar el notebook de procesamiento Gold.
+10. Ejecutar el notebook de Seguridad (GRANTS).
+11. Ejecutar el notebook de Reversión (opcional).
+12. Conectar Power BI al SQL Warehouse y actualizar el Dashboard.
+
+---
+
+# 📌 Resultados obtenidos
+
+Durante el desarrollo del proyecto se logró:
+
+- Implementar un pipeline ETL utilizando Azure Databricks.
+- Aplicar la arquitectura Medallion (Bronze, Silver y Gold).
+- Almacenar información en formato Delta Lake.
+- Administrar los objetos mediante Unity Catalog.
+- Implementar un Workflow de Integración Continua (CI) utilizando GitHub Actions.
+- Desarrollar un Dashboard Ejecutivo conectado a las tablas Gold mediante Power BI.
+
+---
+
+# 👩 Autor
+
+**Mayra Martínez**
+
+Ingeniera en Sistemas | Ingeniería de Datos
+
+Proyecto desarrollado como parte del curso de Ingeniería de Datos con Azure Databricks.
